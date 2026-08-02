@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>CV - Ngô Hồng Phúc</title>
+<meta name="description" content="CV xin việc của Ngô Hồng Phúc - Sinh viên Công nghệ thông tin, định hướng AI &amp; An toàn thông tin.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F5F6F4;
+    --panel: #1C2536;
+    --ink: #1B2130;
+    --body-text: #3B4152;
+    --muted: #59637A;
+    --muted-light: #A9B0C3;
+    --accent: #33508F;
+    --accent-rgb: 51,80,143;
+    --signal: #C08A2E;
+    --signal-rgb: 192,138,46;
+    --line: #E2E4DE;
+    --line-dark: rgba(255,255,255,.12);
+    --radius-sm: 6px;
+    --radius-md: 14px;
+    --radius-pill: 999px;
+    --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+    --font-body: 'IBM Plex Sans', 'Segoe UI', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'SFMono-Regular', ui-monospace, Menlo, Consolas, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: #E6E7E1;
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 15.5px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 48px 20px;
+  }
+
+  ::selection { background: var(--signal); color: #fff; }
+  a { color: var(--accent); }
+
+  .sheet {
+    max-width: 960px;
+    margin: 0 auto;
+    background: var(--paper);
+    border-radius: var(--radius-md);
+    box-shadow: 0 30px 60px -24px rgba(20,26,40,.35), 0 12px 26px -14px rgba(20,26,40,.22);
+    overflow: hidden;
+  }
+
+  /* ---------- Header ---------- */
+  .cv-header { position: relative; padding: 44px 48px 28px; border-bottom: 1px solid var(--line); }
+  .cv-header::before {
+    content:""; position:absolute; left:48px; top:0; width:44px; height:4px;
+    background: var(--signal); border-radius: 0 0 3px 3px;
+  }
+  .name {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: clamp(30px, 4.2vw, 42px); letter-spacing: -0.01em;
+    margin: 18px 0 8px; color: var(--ink);
+  }
+  .role-line { margin: 0 0 12px; font-size: 16px; font-weight: 500; color: var(--accent); }
+  .status-line { margin: 0; font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); letter-spacing: .01em; }
+  .status-line .prompt { color: var(--signal); }
+
+  /* ---------- Layout ---------- */
+  .cv-body { display: grid; grid-template-columns: 296px 1fr; align-items: start; }
+
+  /* ---------- Sidebar ---------- */
+  .sidebar { position: relative; background: var(--panel); color: #E7E9F2; padding: 38px 30px 44px; isolation: isolate; }
+  .sidebar::before {
+    content:""; position:absolute; inset:0;
+    background-image: radial-gradient(rgba(255,255,255,.09) 1px, transparent 1px);
+    background-size: 15px 15px; opacity:.5; z-index:0;
+  }
+  .side-group { position:relative; z-index:1; margin-bottom: 28px; }
+  .side-group:last-child { margin-bottom:0; }
+
+  .avatar-frame {
+    position:relative; z-index:1;
+    width:104px; height:104px; margin:0 auto 30px;
+    border-radius:50%; overflow:hidden;
+    border:3px solid var(--signal);
+    box-shadow: 0 0 0 4px rgba(var(--signal-rgb),.15);
+    background:#141B29;
+  }
+  .avatar-img { width:100%; height:100%; object-fit:cover; display:block; }
+  .avatar-placeholder {
+    display:none; width:100%; height:100%;
+    align-items:center; justify-content:center;
+    color: rgba(var(--signal-rgb),.55);
+  }
+  .avatar-placeholder svg { width:46%; height:46%; }
+
+  .eyebrow {
+    display:flex; align-items:center; gap:9px; margin:0 0 16px;
+    font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--signal); font-weight:600;
+  }
+  .eyebrow::after { content:""; flex:1; height:1px; background: var(--line-dark); }
+
+  .contact-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:15px; }
+  .contact-list li { display:flex; align-items:flex-start; gap:11px; font-size:13px; color:#D7DAE7; }
+  .contact-list > li > svg { flex-shrink:0; width:16px; height:16px; margin-top:2px; color: var(--signal); }
+
+  .link-badge {
+    flex-shrink:0; width:16px; height:16px; margin-top:1px;
+    display:inline-flex; align-items:center; justify-content:center;
+    font-family:var(--font-mono); font-size:8px; font-weight:700; letter-spacing:-.02em;
+    color:var(--signal); border:1.3px solid rgba(var(--signal-rgb),.55); border-radius:4px;
+    line-height:1;
+  }
+  .side-link { color:#D7DAE7; text-decoration:none; border-bottom:1px dotted rgba(255,255,255,.35); }
+  .side-link:hover, .side-link:focus-visible { color:#fff; border-color:#fff; }
+  .side-link:focus-visible { outline:2px solid var(--signal); outline-offset:3px; border-radius:2px; }
+  .side-sub { opacity:.6; }
+
+  .copy-trigger {
+    position:relative; display:inline-flex; align-items:center; gap:7px;
+    background:none; border:none; padding:0; margin:0;
+    font: inherit; color:inherit; cursor:pointer;
+    -webkit-tap-highlight-color: transparent; text-align:left;
+  }
+  .copy-trigger .copy-icon { width:12px; height:12px; opacity:.5; transition:opacity .15s ease; }
+  .copy-trigger:hover, .copy-trigger:focus-visible { color:#fff; }
+  .copy-trigger:hover .copy-icon, .copy-trigger:focus-visible .copy-icon { opacity:.9; }
+  .copy-trigger:focus-visible { outline:2px solid var(--signal); outline-offset:3px; border-radius:3px; }
+
+  .copied-tip {
+    position:absolute; left:0; top:-27px;
+    background: var(--signal); color:#221805;
+    font-family: var(--font-body); font-weight:600; font-size:10.5px;
+    padding:4px 9px; border-radius:5px; white-space:nowrap;
+    opacity:0; transform:translateY(4px);
+    transition: opacity .18s ease, transform .18s ease;
+    pointer-events:none;
+  }
+  .copied-tip.show { opacity:1; transform:translateY(0); }
+
+  .age-badge { color: var(--muted-light); font-size:11.5px; }
+
+  .tag-list { list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:8px; }
+  .tag-list li {
+    font-family: var(--font-mono); font-size:11px; padding:6px 10px;
+    border-radius: var(--radius-sm); background: rgba(255,255,255,.045);
+    border:1px solid var(--line-dark); color:#D7DAE7; line-height:1.3;
+  }
+  .skill-cluster { margin-bottom:14px; }
+  .skill-cluster:last-child { margin-bottom:0; }
+  .skill-cluster-label { margin:0 0 7px; font-size:9.5px; font-weight:600; color:var(--muted-light); text-transform:uppercase; letter-spacing:.08em; }
+
+  .dash-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:11px; }
+  .dash-list li { position:relative; padding-left:17px; font-size:13px; color:#D7DAE7; line-height:1.45; }
+  .dash-list li::before { content:""; position:absolute; left:0; top:.62em; width:8px; height:2px; background:var(--signal); border-radius:1px; }
+
+  .hobby-text { margin:0; font-size:13px; color:#D7DAE7; }
+
+  /* ---------- Main content ---------- */
+  main { min-width:0; }
+  .block { padding: 28px 48px; border-bottom:1px solid var(--line); }
+  .block:last-child { border-bottom:none; }
+
+  .block-title {
+    display:flex; align-items:center; gap:12px; margin:0 0 22px;
+    font-family: var(--font-display); font-size:13px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.09em; color:var(--ink);
+  }
+  .block-title::before { content:""; width:22px; height:3px; border-radius:2px; background:var(--signal); flex-shrink:0; }
+
+  .goal-grid { display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+  .goal-label {
+    margin:0 0 8px; font-family: var(--font-mono); font-size:10.5px; font-weight:600;
+    text-transform:uppercase; letter-spacing:.1em; color: var(--accent);
+  }
+  .goal-text { margin:0; font-size:14.5px; color:var(--body-text); }
+
+  .edu-head { display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap; }
+  .edu-school { font-family:var(--font-display); font-size:19px; font-weight:700; margin:0 0 5px; }
+  .edu-major { margin:0 0 5px; font-size:14px; color:var(--body-text); }
+  .edu-time { margin:0; font-size:12px; font-family:var(--font-mono); color:var(--muted); }
+
+  .sub-label {
+    margin: 30px 0 18px; font-size:11.5px; font-weight:600;
+    text-transform:uppercase; letter-spacing:.08em; color:var(--muted);
+  }
+
+  .course-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+
+  /* Ring signature component */
+  .ring-block { display:flex; flex-direction:column; align-items:center; gap:9px; text-align:center; }
+  .ring { position:relative; width:64px; height:64px; flex-shrink:0; }
+  .ring--lg { width:98px; height:98px; }
+  .ring svg { width:100%; height:100%; transform:rotate(-90deg); display:block; }
+  .ring-track { fill:none; stroke: rgba(var(--accent-rgb),.15); stroke-width:5; }
+  .ring-track--lg { stroke-width:6; }
+  .ring-fill {
+    fill:none; stroke: var(--signal); stroke-width:5; stroke-linecap:round;
+    stroke-dasharray:169.65;
+    animation: ring-draw 1.15s cubic-bezier(.16,.84,.44,1) forwards;
+    animation-delay:.2s;
+  }
+  .ring-fill--lg { stroke-width:6; stroke-dasharray:251.33; animation-name: ring-draw-lg; }
+  @keyframes ring-draw { from { stroke-dashoffset:169.65; } }
+  @keyframes ring-draw-lg { from { stroke-dashoffset:251.33; } }
+  .ring-text {
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center; gap:1px;
+    font-family:var(--font-mono); font-weight:600; color:var(--ink); line-height:1;
+  }
+  .ring-text strong { font-size:15px; }
+  .ring-text small { font-size:9px; color:var(--muted); font-weight:500; }
+  .ring--lg .ring-text strong { font-size:22px; }
+  .ring--lg .ring-text small { font-size:11px; }
+  .ring-caption { margin:0; font-size:11px; color:var(--muted); max-width:120px; line-height:1.3; }
+  .ring-block--lg .ring-caption {
+    font-family:var(--font-mono); font-size:11.5px; font-weight:600;
+    text-transform:uppercase; letter-spacing:.06em; color:var(--accent);
+  }
+
+  /* Timeline */
+  .project-group-label {
+    display:flex; align-items:center; gap:10px; margin:0 0 16px;
+    font-family:var(--font-mono); font-size:10.5px; font-weight:600;
+    text-transform:uppercase; letter-spacing:.09em; color:var(--muted);
+  }
+  .project-group-label::after { content:""; flex:1; height:1px; background:var(--line); }
+  .project-group-label.is-second { margin-top:30px; }
+
+  .featured-card {
+    padding:20px 22px 22px; margin-bottom:4px;
+    border:1px solid var(--line); border-left:3px solid var(--signal);
+    border-radius: var(--radius-md);
+  }
+
+  .practical-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start; }
+  .practical-card { padding:18px 20px; border:1px solid var(--line); border-radius: var(--radius-md); }
+  @media (max-width:640px) { .practical-grid { grid-template-columns:1fr; } }
+
+  .tl-date {
+    display:inline-block; margin-bottom:8px; font-family:var(--font-mono); font-size:11.5px; font-weight:600;
+    color:var(--accent); background: rgba(var(--accent-rgb),.08); padding:3px 10px; border-radius:var(--radius-sm);
+  }
+  .tl-title-row { display:flex; justify-content:space-between; align-items:flex-start; gap:18px; flex-wrap:wrap; }
+  .tl-title { margin:0; font-family:var(--font-display); font-size:16px; font-weight:700; line-height:1.35; }
+  .tl-desc { margin:8px 0 0; font-size:13.5px; color:var(--body-text); }
+  .tl-bullets { margin:10px 0 0; padding-left:19px; display:flex; flex-direction:column; gap:4px; }
+  .tl-bullets li { font-size:13px; color:var(--body-text); line-height:1.5; }
+  .tech-tags { list-style:none; display:flex; flex-wrap:wrap; gap:7px; margin:13px 0 0; padding:0; }
+  .tech-tags li { font-family:var(--font-mono); font-size:11px; padding:4px 10px; border-radius:var(--radius-sm); background:#EEEFEA; color:#4E5568; border:1px solid #DFE1D9; }
+  .chip {
+    font-family:var(--font-mono); font-size:11px; font-weight:600; padding:5px 12px; border-radius:var(--radius-pill);
+    white-space:nowrap; background: rgba(var(--accent-rgb),.1); color:var(--accent); border:1px solid rgba(var(--accent-rgb),.22);
+  }
+
+  .key-results-label {
+    margin:18px 0 12px; font-size:10.5px; font-weight:600; color:var(--muted);
+    text-transform:uppercase; letter-spacing:.08em;
+  }
+  .key-results { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; padding-top:14px; border-top:1px dashed var(--line); }
+  .kr-stat { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; text-align:center; }
+  .kr-number { margin:0; font-family:var(--font-mono); font-size:21px; font-weight:700; color:var(--signal); line-height:1; }
+  .kr-label { margin:0; font-size:10px; color:var(--muted); line-height:1.3; }
+
+  /* Floating action button */
+  .fab { position:fixed; right:26px; bottom:26px; z-index:50; }
+  .fab-btn {
+    display:flex; align-items:center; gap:9px; background:var(--panel); color:#fff; border:none;
+    padding:14px 21px; border-radius:var(--radius-pill); font-family:var(--font-body); font-weight:600; font-size:13.5px;
+    cursor:pointer; box-shadow:0 16px 32px -12px rgba(20,26,40,.5);
+    transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .fab-btn:hover { background:#28324B; transform:translateY(-2px); }
+  .fab-btn:focus-visible { outline:2px solid var(--signal); outline-offset:3px; }
+  .fab-btn svg { width:16px; height:16px; color:var(--signal); flex-shrink:0; }
+
+  /* Responsive */
+  @media (max-width:820px) {
+    .cv-body { grid-template-columns:1fr; }
+    .sheet { border-radius:0; }
+    body { padding:0; background:var(--paper); }
+  }
+  @media (max-width:640px) {
+    .cv-header { padding:32px 24px 22px; }
+    .cv-header::before { left:24px; }
+    .block { padding:26px 24px; }
+    .sidebar { padding:30px 24px 34px; }
+    .goal-grid { grid-template-columns:1fr; }
+    .course-grid { grid-template-columns:repeat(2,1fr); gap:20px 14px; }
+    .edu-head { gap:18px; }
+  }
+  @media (max-width:420px) {
+    .fab-btn span { display:none; }
+    .fab-btn { padding:15px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }
+  }
+
+  @media print {
+    @page { size:A4; margin:10mm 12mm; }
+    * { -webkit-print-color-adjust:exact; print-color-adjust:exact; animation:none !important; transition:none !important; }
+    body { background:#fff; padding:0; }
+    .sheet { box-shadow:none; border-radius:0; max-width:100%; }
+    .fab { display:none !important; }
+    .copy-icon, .copied-tip { display:none !important; }
+    .cv-header { padding:22px 30px 18px; }
+    .block { padding:18px 30px; }
+    .sidebar { padding:22px 22px 26px; }
+    .featured-card, .practical-card, .goal, .ring-block, .edu-head { break-inside:avoid; }
+    .block-title { break-after:avoid; }
+  }
+</style>
+</head>
+<body>
+  <div class="sheet">
+    <header class="cv-header">
+      <h1 class="name">Ngô Hồng Phúc</h1>
+      <p class="role-line">Sinh viên Công nghệ thông tin — Định hướng AI &amp; An toàn thông tin</p>
+      <p class="status-line"><span class="prompt">&gt;</span> AI Security · Malware Detection · Machine Learning</p>
+    </header>
+
+    <div class="cv-body">
+      <aside class="sidebar">
+        <!--
+          ========================================================
+          ẢNH ĐẠI DIỆN — CÁCH THÊM ẢNH CỦA BẠN:
+          1) Để file ảnh (vd: anh-dai-dien.jpg) NẰM CHUNG THƯ MỤC
+             với file CV .html này.
+          2) Sửa thuộc tính src="anh-dai-dien.jpg" bên dưới cho
+             đúng TÊN FILE ảnh bạn dùng (giữ nguyên dấu ngoặc kép).
+          3) Mở lại file CV bằng trình duyệt — ảnh sẽ tự hiện ra
+             thay cho khung icon mặc định, không cần sửa gì khác.
+          Gợi ý: ảnh vuông (tỉ lệ 1:1), mặt rõ, nền đơn giản sẽ
+          hiển thị đẹp nhất vì khung là hình tròn (bo tự động).
+          ========================================================
+        -->
+        <div class="avatar-frame" role="img" aria-label="Ảnh đại diện Ngô Hồng Phúc">
+          <img
+            src="anh-dai-dien.jpg"
+            alt=""
+            class="avatar-img"
+            onerror="this.style.display='none'; document.getElementById('avatarPlaceholder').style.display='flex';"
+          >
+          <div class="avatar-placeholder" id="avatarPlaceholder" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="4"></circle>
+              <path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"></path>
+            </svg>
+          </div>
+        </div>
+
+        <div class="side-group">
+          <p class="eyebrow">Liên hệ</p>
+          <ul class="contact-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.2"></rect><line x1="11" y1="18" x2="13" y2="18"></line></svg>
+              <button class="copy-trigger" type="button" data-copy="0777268757" aria-label="Sao chép số điện thoại">
+                <span>0777268757</span>
+                <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+                <span class="copied-tip" role="status" aria-live="polite">Đã sao chép</span>
+              </button>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><polyline points="2,6 12,13 22,6"></polyline></svg>
+              <button class="copy-trigger" type="button" data-copy="phucngo2406@gmail.com" aria-label="Sao chép địa chỉ email">
+                <span>phucngo2406@gmail.com</span>
+                <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+                <span class="copied-tip" role="status" aria-live="polite">Đã sao chép</span>
+              </button>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c-4-4.5-7-8-7-11.5A7 7 0 0 1 12 2a7 7 0 0 1 7 7.5C19 13 16 16.5 12 21z"></path><circle cx="12" cy="9.5" r="2.3"></circle></svg>
+              <span>23, DX068, khu 6, phường Chánh Hiệp, Bình Dương, TP. Hồ Chí Minh</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><line x1="3" y1="10" x2="21" y2="10"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="16" y1="2" x2="16" y2="6"></line></svg>
+              <span>24/07/2006 <span class="age-badge" id="ageBadge"></span></span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="side-group">
+          <p class="eyebrow">Liên kết</p>
+          <ul class="contact-list">
+            <li>
+              <span class="link-badge" aria-hidden="true">f</span>
+              <a class="side-link" href="https://www.facebook.com/phuc.ngo.983966" target="_blank" rel="noopener noreferrer" aria-label="Facebook: Phúc Ngô">Phúc Ngô</a>
+            </li>
+            <li>
+              <span class="link-badge" aria-hidden="true">Z</span>
+              <span aria-label="Zalo: Ngô Hồng Phúc, số 0777268757">Ngô Hồng Phúc <span class="side-sub">· 0777268757</span></span>
+            </li>
+            <li>
+              <span class="link-badge" aria-hidden="true">gh</span>
+              <a class="side-link" href="https://github.com/phuc123-hn" target="_blank" rel="noopener noreferrer" aria-label="GitHub: phuc123-hn">phuc123-hn</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="side-group">
+          <p class="eyebrow">Kỹ năng chuyên ngành</p>
+          <div class="skill-cluster">
+            <p class="skill-cluster-label">Ngôn ngữ &amp; Lập trình</p>
+            <ul class="tag-list">
+              <li>Python</li>
+              <li>C#</li>
+            </ul>
+          </div>
+          <div class="skill-cluster">
+            <p class="skill-cluster-label">Backend &amp; CSDL</p>
+            <ul class="tag-list">
+              <li>Node.js (Express.js)</li>
+              <li>ASP.NET MVC</li>
+              <li>SQL Server</li>
+            </ul>
+          </div>
+          <div class="skill-cluster">
+            <p class="skill-cluster-label">AI &amp; Bảo mật</p>
+            <ul class="tag-list">
+              <li>Machine Learning cơ bản</li>
+              <li>Phân tích mã độc tĩnh</li>
+            </ul>
+          </div>
+          <div class="skill-cluster">
+            <p class="skill-cluster-label">Công cụ</p>
+            <ul class="tag-list">
+              <li>Git &amp; GitHub</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="side-group">
+          <p class="eyebrow">Kỹ năng thực tế</p>
+          <ul class="dash-list">
+            <li>Phân tích &amp; giải quyết vấn đề</li>
+            <li>Tư duy phân tích (Analytical Thinking)</li>
+            <li>Phân tích và xử lý dữ liệu</li>
+            <li>Tư duy logic</li>
+          </ul>
+        </div>
+
+        <div class="side-group">
+          <p class="eyebrow">Sở thích</p>
+          <p class="hobby-text">Khám phá công nghệ mới</p>
+        </div>
+      </aside>
+
+      <main>
+        <section class="block" id="objective">
+          <h2 class="block-title">Mục tiêu nghề nghiệp</h2>
+          <div class="goal-grid">
+            <div class="goal">
+              <p class="goal-label">Dài hạn</p>
+              <p class="goal-text">Trở thành kỹ sư bảo mật thông tin giỏi, chuyên sâu về AI kết hợp An toàn thông tin (AI Security).</p>
+            </div>
+            <div class="goal">
+              <p class="goal-label">Ngắn hạn</p>
+              <p class="goal-text">Hoàn thành các đề tài nghiên cứu chất lượng về phát hiện mã độc dựa trên AI (AI-based Malware Detection) và quản trị dữ liệu dựa trên AI (AI-driven Data Governance).</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="education">
+          <h2 class="block-title">Học vấn</h2>
+          <div class="edu-head">
+            <div>
+              <h3 class="edu-school">Đại học Thủ Dầu Một</h3>
+              <p class="edu-major">Chuyên ngành Công nghệ thông tin</p>
+              <p class="edu-time">2024 – 2029 · Hiện là sinh viên năm 3</p>
+            </div>
+            <div class="ring-block ring-block--lg">
+              <div class="ring ring--lg" role="img" aria-label="Điểm trung bình tích lũy 7.42 trên 10">
+                <svg viewBox="0 0 98 98" aria-hidden="true">
+                  <circle class="ring-track ring-track--lg" cx="49" cy="49" r="40"></circle>
+                  <circle class="ring-fill ring-fill--lg" cx="49" cy="49" r="40" stroke-dashoffset="64.84"></circle>
+                </svg>
+                <span class="ring-text" aria-hidden="true"><strong>7.42</strong><small>/10</small></span>
+              </div>
+              <p class="ring-caption">GPA tích lũy</p>
+            </div>
+          </div>
+
+          <p class="sub-label">Môn học nổi bật</p>
+          <div class="course-grid">
+            <div class="ring-block">
+              <div class="ring" role="img" aria-label="Kỹ thuật lập trình: 8.4 trên 10">
+                <svg viewBox="0 0 64 64" aria-hidden="true">
+                  <circle class="ring-track" cx="32" cy="32" r="27"></circle>
+                  <circle class="ring-fill" cx="32" cy="32" r="27" stroke-dashoffset="27.14"></circle>
+                </svg>
+                <span class="ring-text" aria-hidden="true"><strong>8.4</strong></span>
+              </div>
+              <p class="ring-caption">Kỹ thuật lập trình</p>
+            </div>
+            <div class="ring-block">
+              <div class="ring" role="img" aria-label="Hệ điều hành: 8.5 trên 10">
+                <svg viewBox="0 0 64 64" aria-hidden="true">
+                  <circle class="ring-track" cx="32" cy="32" r="27"></circle>
+                  <circle class="ring-fill" cx="32" cy="32" r="27" stroke-dashoffset="25.45"></circle>
+                </svg>
+                <span class="ring-text" aria-hidden="true"><strong>8.5</strong></span>
+              </div>
+              <p class="ring-caption">Hệ điều hành</p>
+            </div>
+            <div class="ring-block">
+              <div class="ring" role="img" aria-label="Toán rời rạc: 8.1 trên 10">
+                <svg viewBox="0 0 64 64" aria-hidden="true">
+                  <circle class="ring-track" cx="32" cy="32" r="27"></circle>
+                  <circle class="ring-fill" cx="32" cy="32" r="27" stroke-dashoffset="32.23"></circle>
+                </svg>
+                <span class="ring-text" aria-hidden="true"><strong>8.1</strong></span>
+              </div>
+              <p class="ring-caption">Toán rời rạc</p>
+            </div>
+            <div class="ring-block">
+              <div class="ring" role="img" aria-label="Toán cao cấp 2: 8.9 trên 10">
+                <svg viewBox="0 0 64 64" aria-hidden="true">
+                  <circle class="ring-track" cx="32" cy="32" r="27"></circle>
+                  <circle class="ring-fill" cx="32" cy="32" r="27" stroke-dashoffset="18.66"></circle>
+                </svg>
+                <span class="ring-text" aria-hidden="true"><strong>8.9</strong></span>
+              </div>
+              <p class="ring-caption">Toán cao cấp 2 (Ma trận)</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="projects">
+          <h2 class="block-title">Hoạt động &amp; Dự án</h2>
+
+          <p class="project-group-label">Nghiên cứu &amp; học thuật · trong trường</p>
+          <div class="featured-card">
+            <span class="tl-date">07/2026</span>
+            <div class="tl-title-row">
+              <h3 class="tl-title">NCKH cấp Khoa — Hệ thống hỗ trợ phân tích và phát hiện mã độc dựa trên đặc trưng tĩnh &amp; Machine Learning</h3>
+              <div class="ring-block">
+                <div class="ring" role="img" aria-label="Kết quả nghiệm thu 88 trên 100">
+                  <svg viewBox="0 0 64 64" aria-hidden="true">
+                    <circle class="ring-track" cx="32" cy="32" r="27"></circle>
+                    <circle class="ring-fill" cx="32" cy="32" r="27" stroke-dashoffset="20.36"></circle>
+                  </svg>
+                  <span class="ring-text" aria-hidden="true"><strong>88</strong><small>/100</small></span>
+                </div>
+                <p class="ring-caption">Kết quả nghiệm thu</p>
+              </div>
+            </div>
+            <p class="tl-desc">Đề tài nhóm 2 sinh viên (GVHD: ThS. Trần Bá Minh Sơn) — trực tiếp xây dựng toàn bộ pipeline Machine Learning và ứng dụng web.</p>
+            <ul class="tl-bullets">
+              <li>Xây dựng hệ thống phát hiện mã độc file PE dựa trên 2.381 đặc trưng tĩnh, sử dụng bộ dữ liệu chuẩn EMBER 2018 (600.000 mẫu có nhãn), trích xuất bằng thư viện LIEF</li>
+              <li>Huấn luyện, so sánh 3 mô hình Machine Learning (XGBoost, LightGBM, Random Forest); XGBoost đạt F1-score 96,82% và ROC-AUC 99,38% trên tập kiểm thử độc lập 200.000 mẫu</li>
+              <li>Áp dụng Youden's J Statistic để tối ưu ngưỡng phân loại, giảm 43% tỷ lệ cảnh báo nhầm (False Positive Rate) so với ngưỡng mặc định</li>
+              <li>Xây dựng Evidence Aggregation Framework kết hợp SHAP và Import Pattern Engine ánh xạ MITRE ATT&amp;CK để giải thích quyết định phân loại theo từng mẫu; triển khai ứng dụng web bằng Flask với nhật ký phân tích thời gian thực</li>
+            </ul>
+            <ul class="tech-tags">
+              <li>XGBoost</li><li>LightGBM</li><li>Random Forest</li><li>SHAP</li><li>Flask</li><li>LIEF</li>
+            </ul>
+
+            <p class="key-results-label">Kết quả nổi bật</p>
+            <div class="key-results">
+              <div class="ring-block">
+                <div class="ring" role="img" aria-label="F1-score 96.82%">
+                  <svg viewBox="0 0 64 64" aria-hidden="true">
+                    <circle class="ring-track" cx="32" cy="32" r="27"></circle>
+                    <circle class="ring-fill" cx="32" cy="32" r="27" stroke-dashoffset="5.40"></circle>
+                  </svg>
+                  <span class="ring-text" aria-hidden="true"><strong>96.8</strong><small>%</small></span>
+                </div>
+                <p class="ring-caption">F1-score (XGBoost)</p>
+              </div>
+              <div class="ring-block">
+                <div class="ring" role="img" aria-label="ROC-AUC 99.38%">
+                  <svg viewBox="0 0 64 64" aria-hidden="true">
+                    <circle class="ring-track" cx="32" cy="32" r="27"></circle>
+                    <circle class="ring-fill" cx="32" cy="32" r="27" stroke-dashoffset="1.05"></circle>
+                  </svg>
+                  <span class="ring-text" aria-hidden="true"><strong>99.4</strong><small>%</small></span>
+                </div>
+                <p class="ring-caption">ROC-AUC</p>
+              </div>
+              <div class="kr-stat">
+                <p class="kr-number">−43%</p>
+                <p class="kr-label">False Positive Rate<br>(Youden's J)</p>
+              </div>
+              <div class="kr-stat">
+                <p class="kr-number">600K</p>
+                <p class="kr-label">mẫu · EMBER 2018</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="project-group-label is-second">Dự án thực tế · ngoài trường</p>
+          <div class="practical-grid">
+            <div class="practical-card">
+              <span class="tl-date">2026</span>
+              <h3 class="tl-title">Delta Stress Lens — Hệ thống Giám sát Nông nghiệp</h3>
+              <ul class="tl-bullets">
+                <li>Phát triển hệ thống web theo yêu cầu bằng Node.js, Express.js, HTML, CSS và JavaScript</li>
+                <li>Xây dựng dashboard, bản đồ trực quan, hệ thống nhắn tin và thông báo giữa cơ quan quản lý và nông dân</li>
+                <li>Thiết kế giao diện responsive, tối ưu trải nghiệm người dùng và tích hợp cơ sở dữ liệu</li>
+                <li>Bàn giao sản phẩm hoàn chỉnh cho khách hàng</li>
+              </ul>
+              <ul class="tech-tags">
+                <li>Node.js</li><li>Express.js</li><li>HTML</li><li>CSS</li><li>JavaScript</li>
+              </ul>
+            </div>
+
+            <div class="practical-card">
+              <span class="tl-date">2025</span>
+              <div class="tl-title-row">
+                <h3 class="tl-title">Trò chơi Web 2D — Chủ đề Cháy rừng</h3>
+                <span class="chip">Xếp hạng 80</span>
+              </div>
+              <p class="tl-desc">Tham gia thiết kế và phát triển trò chơi web 2D nhằm nâng cao nhận thức cộng đồng về phòng chống cháy rừng.</p>
+              <ul class="tl-bullets">
+                <li>Xây dựng giao diện người chơi</li>
+                <li>Xây dựng cơ chế mô phỏng lan truyền đám cháy theo điều kiện môi trường (hướng gió, độ ẩm)</li>
+                <li>Tích hợp các thành phần tương tác, hoàn thiện trải nghiệm người chơi</li>
+              </ul>
+              <ul class="tech-tags">
+                <li>HTML</li><li>CSS</li><li>JavaScript</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="fab">
+    <button id="printBtn" type="button" class="fab-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="6,9 6,3 18,3 18,9"></polyline>
+        <rect x="4" y="9" width="16" height="8" rx="1.5"></rect>
+        <polyline points="6,17 6,21 18,21 18,17"></polyline>
+      </svg>
+      <span>Xuất PDF / In CV</span>
+    </button>
+  </div>
+
+  <script>
+  (function () {
+    'use strict';
+
+    // Tính tuổi hiện tại từ ngày sinh
+    var dob = new Date(2006, 6, 24);
+    var today = new Date();
+    var age = today.getFullYear() - dob.getFullYear();
+    var beforeBirthday = (today.getMonth() < dob.getMonth()) ||
+      (today.getMonth() === dob.getMonth() && today.getDate() < dob.getDate());
+    if (beforeBirthday) age -= 1;
+    var ageEl = document.getElementById('ageBadge');
+    if (ageEl) ageEl.textContent = '(' + age + ' tuổi)';
+
+    // Sao chép số điện thoại / email
+    function fallbackCopy(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try { document.execCommand('copy'); } catch (err) { /* bỏ qua */ }
+      document.body.removeChild(ta);
+    }
+
+    var copyButtons = document.querySelectorAll('.copy-trigger');
+    copyButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var value = btn.getAttribute('data-copy') || '';
+        var showTip = function () {
+          var tip = btn.querySelector('.copied-tip');
+          if (!tip) return;
+          tip.classList.add('show');
+          window.clearTimeout(btn._tipTimer);
+          btn._tipTimer = window.setTimeout(function () {
+            tip.classList.remove('show');
+          }, 1600);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(value).then(showTip).catch(function () {
+            fallbackCopy(value);
+            showTip();
+          });
+        } else {
+          fallbackCopy(value);
+          showTip();
+        }
+      });
+    });
+
+    // Nút in / xuất PDF
+    var printBtn = document.getElementById('printBtn');
+    if (printBtn) {
+      printBtn.addEventListener('click', function () {
+        window.print();
+      });
+    }
+  })();
+  </script>
+</body>
+</html>
